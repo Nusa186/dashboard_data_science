@@ -26,22 +26,22 @@ match action:
 
     case "Tampilkan Data":
         # Menampilkan data di kolom pertama
-        col1.header("Data Awal")
-        col1.dataframe(data.head())
+        st.header("Data Awal")
+        st.dataframe(data.head())
 
         # Menampilkan deskripsi data di kolom kedua
-        col2.header("Deskripsi Statistik Data")
-        col2.write(data[selected_columns].describe())
+        st.header("Deskripsi Statistik Data")
+        st.write(data[selected_columns].describe())
 
     case "Analisis Korelasi":
         # Analisis korelasi di kolom pertama
-        col1.header("Korelasi Numerik terhadap Attrition")
+        st.header("Korelasi Numerik terhadap Attrition")
         if "Attrition" in data.columns:
             numeric_columns = data.select_dtypes(include=['float64', 'int64']).columns
             correlation = data[numeric_columns].corr()["Attrition"].sort_values(ascending=False)
             
             # Visualisasi korelasi menggunakan bar_chart di kolom pertama
-            col1.bar_chart(correlation)
+            st.bar_chart(correlation)
 
     case "Tampilkan Grafik":
         # Pembagian grafik berdasarkan kategori
