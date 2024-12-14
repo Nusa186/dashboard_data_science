@@ -93,5 +93,5 @@ match action:
 
             - Karyawan yang memiliki pekerjaan sampingan atau mereka yang telah bekerja di beberapa perusahaan cenderung memiliki tingkat attrition yang lebih tinggi. Ini mungkin menunjukkan bahwa karyawan yang lebih berpengalaman atau yang mencari peluang lain memiliki kecenderungan untuk keluar lebih cepat.
 
-            - Kolom seperti **status pernikahan (MaritalStatus)** dan **komitmen perjalanan bisnis (BusinessTravel)** juga dapat digunakan untuk memprediksi kelompok karyawan dengan risiko attrition yang tinggi. Karyawan yang mungkin sering melakukan perjalanan bisnis atau yang memiliki status pernikahan tertentu (misalnya, yang tidak menikah) mungkin lebih rentan terhadap pengunduran diri.
+            - Kolom seperti **status pernikahan (MaritalStatus)** dan **perjalanan bisnis (BusinessTravel)** juga dapat digunakan untuk memprediksi kelompok karyawan dengan risiko attrition yang tinggi. Karyawan yang mungkin sering melakukan perjalanan bisnis atau yang memiliki status pernikahan tertentu (misalnya, yang tidak menikah) mungkin lebih rentan terhadap pengunduran diri.
             """)
