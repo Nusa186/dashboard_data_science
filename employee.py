@@ -12,7 +12,7 @@ action = st.radio(
 
 # Memuat dataset
 data = pd.read_csv('data_cleaned.csv')
-data['Attrition'] = data['Attrition'].replace({0: 'Tidak', 1: 'Ya'})
+data['Attrition'] = data['Attrition'].replace({0: 'Bertahan', 1: 'Keluar'})
 
 category_mapping = {
     1: "Rendah",
@@ -50,8 +50,8 @@ match action:
     case "Tampilkan Grafik":
         # Pembagian grafik berdasarkan kategori
         col1.header("Demografi Karyawan")
-        selected_category = col1.selectbox("Pilih Kolom Kategori (Demografi):", options=data.select_dtypes(include=['object']).columns)
-
+        selected_category = col1.selectbox("Pilih Kolom Kategori (Demografi):", options=["BusinessTravel", "Department", "Education", "EducationField", "MaritalStatus", "RelationshipSatisfaction"])
+        st.write(f"Pengaruh faktor {selected_category} terhadap Attrition")
         if selected_category:
             # Menghitung jumlah tiap kategori berdasarkan Attrition
             category_counts = data.groupby([selected_category, 'Attrition']).size().unstack(fill_value=0)
@@ -62,7 +62,7 @@ match action:
         # Kepuasan Kerja
         col2.header("Kepuasan Kerja")
         selected_satisfaction = col2.selectbox("Pilih Kolom Kepuasan Kerja:", options=["JobSatisfaction", "EnvironmentSatisfaction", "RelationshipSatisfaction", "WorkLifeBalance"])
-
+        st.write(f"Pengaruh faktor {selected_satisfaction} terhadap Attrition")
         if selected_satisfaction:
             satisfaction_counts = data.groupby([selected_satisfaction, 'Attrition']).size().unstack(fill_value=0)
             col2.bar_chart(satisfaction_counts)
@@ -70,7 +70,7 @@ match action:
         # Gaji dan Penghasilan
         col3.header("Rata-rata Gaji dan Penghasilan")
         selected_numeric = col3.selectbox("Pilih Kolom Gaji/Penghasilan:", options=["MonthlyIncome", "HourlyRate", "DailyRate"])
-
+        st.write(f"Pengaruh faktor {selected_numeric} terhadap Attrition")
         if selected_numeric:
             # Distribusi gaji berdasarkan attrition
             income_stats = data.groupby('Attrition')[selected_numeric].mean()
@@ -80,7 +80,7 @@ match action:
         # Kolom 4: Kolom lain untuk faktor terkait
         col4.header("Faktor Lainnya")
         selected_other = col4.selectbox("Pilih Kolom Lainnya:", options=["Age", "JobLevel", "NumCompaniesWorked", "YearsAtCompany"])
-
+        st.write(f"Pengaruh faktor {selected_other} terhadap Attrition")
         if selected_other:
             other_counts = data.groupby('Attrition')[selected_other].mean()
             col4.bar_chart(other_counts)
