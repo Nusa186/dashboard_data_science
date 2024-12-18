@@ -12,11 +12,13 @@ action = st.radio(
 
 # Memuat dataset
 data = pd.read_csv('data_cleaned.csv')
+data['Attrition'] = data['Attrition'].replace({0: 'Tidak', 1: 'Ya'})
+
 category_mapping = {
-    1: "Low",
-    2: "Medium",
-    3: "High",
-    4: "Very High"
+    1: "Rendah",
+    2: "Biasa",
+    3: "Tinggi",
+    4: "Sangat Tinggi"
 }
 
 # Ganti nilai kategori dengan label deskriptif
