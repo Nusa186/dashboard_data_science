@@ -15,7 +15,7 @@ data = pd.read_csv('data_cleaned.csv')
 
 default_columns = ["Attrition", "Age", "JobLevel", "MonthlyIncome"]
 selected_columns = st.sidebar.multiselect(
-    "Pilih Kolom untuk Analisis", 
+    "Pilih Kolom untuk Menampilkan Deskripsi Data", 
     options=data.columns, 
     default=default_columns  # Kolom default yang dipilih
 )
