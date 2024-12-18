@@ -6,8 +6,8 @@ st.title("Dashboard Analisis Faktor yang Mempengaruhi Attrition Rate")
 
 # Tombol interaktif
 action = st.radio(
-    "Pilih tindakan:",
-    ["Tampilkan Data", "Analisis Korelasi", "Tampilkan Grafik"]
+    "Pilih Menu:",
+    ["Tampilkan Data", "Tampilkan Grafik"]
 )
 
 # Memuat dataset
@@ -46,16 +46,6 @@ match action:
         # Menampilkan deskripsi data di kolom kedua
         st.header("Deskripsi Statistik Data")
         st.write(data[selected_columns].describe())
-
-    case "Analisis Korelasi":
-        # Analisis korelasi di kolom pertama
-        st.header("Korelasi Numerik terhadap Attrition")
-        if "Attrition" in data.columns:
-            numeric_columns = data.select_dtypes(include=['float64', 'int64']).columns
-            correlation = data[numeric_columns].corr()["Attrition"].sort_values(ascending=False)
-            
-            # Visualisasi korelasi menggunakan bar_chart di kolom pertama
-            st.bar_chart(correlation)
 
     case "Tampilkan Grafik":
         # Pembagian grafik berdasarkan kategori
