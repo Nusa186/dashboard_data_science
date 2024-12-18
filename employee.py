@@ -12,7 +12,19 @@ action = st.radio(
 
 # Memuat dataset
 data = pd.read_csv('data_cleaned.csv')
+category_mapping = {
+    1: "Low",
+    2: "Medium",
+    3: "High",
+    4: "Very High"
+}
 
+# Ganti nilai kategori dengan label deskriptif
+columns_to_map = ['JobSatisfaction', 'EnvironmentSatisfaction', 'RelationshipSatisfaction', 'WorkLifeBalance']
+
+for col in columns_to_map:
+    data[col] = data[col].replace(category_mapping)
+    
 default_columns = ["Attrition", "Age", "JobLevel", "MonthlyIncome"]
 selected_columns = st.sidebar.multiselect(
     "Pilih Kolom untuk Menampilkan Deskripsi Data", 
